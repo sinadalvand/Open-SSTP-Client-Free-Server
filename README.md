@@ -4,7 +4,7 @@ This is an open-sourced Secure Socket Tunneling Protocol (MS-SSTP) client for An
 So no test with other servers is done. Its behavior may be still unstable.
 
 ## Installation
-You can download and install the latest version via [direct download](https://github.com/mfoolady/Open-SSTP-Client-Free-Server/releases/download/v7.1.3/osc-free-7.1.3.apk).
+You can download and install the latest version via [direct download](https://github.com/mfoolady/Open-SSTP-Client-Free-Server/releases/download/v7.1.4/osc-free-7.1.4.apk).
 
 
 ## Usage

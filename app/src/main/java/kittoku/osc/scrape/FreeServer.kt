@@ -17,7 +17,11 @@ data class ServerData(
     var PORT: Int = 443,
     var UPTIME: String = "",
     var PING: String = ""
-)
+){
+    override fun toString(): String {
+        return "$LOCATION\n$HOSTNAME\n$PORT\n$UPTIME\n$PING"
+    }
+}
 
 
 class HtmlExtractionFreeServer {
@@ -47,6 +51,7 @@ class HtmlExtractionFreeServer {
 
                 var data = ServerData()
                 extracted.forEachIndexed { index, element ->
+                    Log.i("TAG", element)
                     if (index > 3) {
                         val step = index % 4
                         if (step == 0) {

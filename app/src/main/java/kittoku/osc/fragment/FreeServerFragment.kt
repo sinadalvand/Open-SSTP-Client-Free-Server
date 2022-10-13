@@ -15,6 +15,7 @@ import kittoku.osc.R
 import kittoku.osc.scrape.FreeServerListAdapter
 import kittoku.osc.scrape.HtmlExtractionFreeServer
 import kittoku.osc.scrape.ServerData
+import java.io.File
 
 class FreeServerFragment : Fragment() {
 
@@ -47,12 +48,12 @@ class FreeServerFragment : Fragment() {
         RefreshList(view.context)
     }
 
-    fun RefreshList(context: Context){
+    fun RefreshList(context: Context) {
         fabRefresh.visibility = View.INVISIBLE
         mListView.visibility = View.INVISIBLE
         prg.visibility = View.VISIBLE
 
-        val serverDataList = ArrayList<ServerData>()
+        var serverDataList = ArrayList<ServerData>()
 
         HtmlExtractionFreeServer().extract() { result ->
             handler.post {
@@ -64,22 +65,71 @@ class FreeServerFragment : Fragment() {
 
                     val adapter = FreeServerListAdapter(context, serverDataList)
                     mListView.adapter = adapter
-
                     mListView.visibility = View.VISIBLE
-                }
-                else
-                {
-                    Toast.makeText(
-                        context,
-                        "No internet connection!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
+                    ExportServers(context, serverDataList)
+                } else {
+                    serverDataList = ImportServers(context)
+
+                    if (serverDataList.size > 0) {
+                        val adapter = FreeServerListAdapter(context, serverDataList)
+                        mListView.adapter = adapter
+                        mListView.visibility = View.VISIBLE
+                    } else
+                        Toast.makeText(
+                            context,
+                            "Can not fetch the Servers!",
+                            Toast.LENGTH_SHORT
+                        ).show()
                 }
 
                 prg.visibility = View.INVISIBLE
                 fabRefresh.visibility = View.VISIBLE
             }
         }
+    }
+
+    fun ExportServers(context: Context, data: ArrayList<ServerData>) {
+        val file = File(context.getFilesDir(), "Records.txt")
+        file.createNewFile()
+        data.forEach {
+            file.appendText(it.toString() + "\n")
+        }
+    }
+
+    fun ImportServers(context: Context): ArrayList<ServerData> {
+        val listOfServerData = ArrayList<ServerData>()
+        val file = File(context.getFilesDir(), "Records.txt")
+        if (file.exists()) {
+            val contents = file.readText()
+            val lines = contents.split("\n")
+            var data = ServerData()
+            lines.forEachIndexed { index, element ->
+                val step = index % 4
+                if (step == 0) {
+                    data = ServerData()
+                }
+                when (step) {
+                    0 -> data.LOCATION = element
+                    1 -> {
+                        if (element.contains(':')) {
+                            val temp = element.split(":")
+                            data.HOSTNAME = temp[0]
+                            data.PORT = temp[1].toInt()
+                        } else {
+                            data.HOSTNAME = element
+                            data.PORT = 443
+                        }
+                    }
+                    2 -> data.UPTIME = element
+                    3 -> {
+                        data.PING = element
+                        listOfServerData.add(data)
+                    }
+                }
+            }
+        }
+        return listOfServerData
     }
 }
 

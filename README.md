@@ -1,10 +1,10 @@
-# Open SSTP Client for Android <img src="https://github.com/kittoku/Open-SSTP-Client/raw/main/images/icon.png" height="40">
+# Open SSTP Client for Android with Free Servers list <img src="https://github.com/kittoku/Open-SSTP-Client/raw/main/images/icon.png" height="40">
 This is an open-sourced Secure Socket Tunneling Protocol (MS-SSTP) client for Android, developed for accessing to 
 [VPN Azure Cloud](https://www.vpnazure.net/) (or [SoftEther VPN Server](https://www.softether.org/)) (or [SSTP VPN Server](https://en.wikipedia.org/wiki/Secure_Socket_Tunneling_Protocol/)). 
 So no test with other servers is done. Its behavior may be still unstable.
 
 ## Installation
-You can download and install the latest version via [direct download](https://github.com/mfoolady/Open-SSTP-Client-Free-Server/releases/download/v7.1.2/Open.SSTP.Client.FREE.SERVER.apk).
+You can download and install the latest version via [direct download](https://github.com/mfoolady/Open-SSTP-Client-Free-Server/releases/download/v7.1.3/osc-free-7.1.3.apk).
 
 
 ## Usage

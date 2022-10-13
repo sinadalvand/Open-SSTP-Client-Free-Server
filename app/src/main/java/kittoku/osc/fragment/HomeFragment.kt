@@ -4,14 +4,17 @@ import android.app.Activity
 import android.content.Intent
 import android.net.VpnService
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import kittoku.osc.R
 import kittoku.osc.preference.OscPreference
 import kittoku.osc.preference.checkPreferences
 import kittoku.osc.preference.custom.HomeConnectorPreference
+import kittoku.osc.preference.custom.HomeHostnamePreference
 import kittoku.osc.preference.toastInvalidSetting
 import kittoku.osc.service.ACTION_VPN_CONNECT
 import kittoku.osc.service.ACTION_VPN_DISCONNECT
@@ -19,6 +22,7 @@ import kittoku.osc.service.SstpVpnService
 
 
 class HomeFragment : PreferenceFragmentCompat() {
+
     private val preparationLauncher = registerForActivityResult(StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             startVpnService(ACTION_VPN_CONNECT)
@@ -32,6 +36,13 @@ class HomeFragment : PreferenceFragmentCompat() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        attachConnectorListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getPreferenceScreen().removeAll();
+        addPreferencesFromResource(R.xml.home)
         attachConnectorListener()
     }
 

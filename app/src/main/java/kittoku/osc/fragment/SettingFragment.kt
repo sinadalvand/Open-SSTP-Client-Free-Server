@@ -47,6 +47,15 @@ internal class SettingFragment : PreferenceFragmentCompat() {
         setLogDirListener()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getPreferenceScreen().removeAll();
+        addPreferencesFromResource(R.xml.settings)
+        setCertDirListener()
+        setAllowedAppsListener()
+        setLogDirListener()
+    }
+
     private fun setCertDirListener() {
         findPreference<DirectoryPreference>(OscPreference.SSL_CERT_DIR.name)!!.also {
             it.onPreferenceClickListener = Preference.OnPreferenceClickListener {

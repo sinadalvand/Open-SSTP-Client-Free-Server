@@ -105,25 +105,17 @@ class FreeServerFragment : Fragment() {
             val lines = contents.split("\n")
             var data = ServerData()
             lines.forEachIndexed { index, element ->
-                val step = index % 4
+                val step = index % 5
                 if (step == 0) {
                     data = ServerData()
                 }
                 when (step) {
                     0 -> data.LOCATION = element
-                    1 -> {
-                        if (element.contains(':')) {
-                            val temp = element.split(":")
-                            data.HOSTNAME = temp[0]
-                            data.PORT = temp[1].toInt()
-                        } else {
-                            data.HOSTNAME = element
-                            data.PORT = 443
-                        }
-                    }
-                    2 -> data.UPTIME = element
-                    3 -> {
-                        data.PING = element
+                    1 -> data.HOSTNAME = element
+                    2 -> data.PORT = element.toInt()
+                    3 -> data.PING = element
+                    4 -> {
+                        data.UPTIME = element
                         listOfServerData.add(data)
                     }
                 }

@@ -113,9 +113,9 @@ class FreeServerFragment : Fragment() {
                     0 -> data.LOCATION = element
                     1 -> data.HOSTNAME = element
                     2 -> data.PORT = element.toInt()
-                    3 -> data.PING = element
+                    3 -> data.UPTIME = element
                     4 -> {
-                        data.UPTIME = element
+                        data.PING = element
                         listOfServerData.add(data)
                     }
                 }

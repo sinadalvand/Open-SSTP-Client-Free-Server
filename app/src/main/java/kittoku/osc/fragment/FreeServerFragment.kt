@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kittoku.osc.R
 import kittoku.osc.scrape.FreeServerListAdapter
 import kittoku.osc.scrape.HtmlExtractionFreeServer
@@ -90,36 +92,21 @@ class FreeServerFragment : Fragment() {
     }
 
     fun ExportServers(context: Context, data: ArrayList<ServerData>) {
-        val file = File(context.getFilesDir(), "Records.txt")
+        val file = File(context.getFilesDir(), "Records.json")
         file.createNewFile()
-        data.forEach {
-            file.appendText(it.toString() + "\n")
-        }
+        val json = Gson().toJson(data)
+        //Log.i("TAG", json)
+        file.writeText(json)
     }
 
     fun ImportServers(context: Context): ArrayList<ServerData> {
         val listOfServerData = ArrayList<ServerData>()
-        val file = File(context.getFilesDir(), "Records.txt")
+        val file = File(context.getFilesDir(), "Records.json")
         if (file.exists()) {
             val contents = file.readText()
-            val lines = contents.split("\n")
-            var data = ServerData()
-            lines.forEachIndexed { index, element ->
-                val step = index % 5
-                if (step == 0) {
-                    data = ServerData()
-                }
-                when (step) {
-                    0 -> data.LOCATION = element
-                    1 -> data.HOSTNAME = element
-                    2 -> data.PORT = element.toInt()
-                    3 -> data.UPTIME = element
-                    4 -> {
-                        data.PING = element
-                        listOfServerData.add(data)
-                    }
-                }
-            }
+            //Log.i("TAG", contents)
+            val listType = object: TypeToken<ArrayList<ServerData>>() {}.type
+            return Gson().fromJson(contents, listType)
         }
         return listOfServerData
     }

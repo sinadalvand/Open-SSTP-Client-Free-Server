@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -65,7 +66,7 @@ class FreeServerFragment : Fragment() {
                         serverDataList.add(it)
                     }
 
-                    val adapter = FreeServerListAdapter(context, serverDataList)
+                    val adapter = FreeServerListAdapter(context, serverDataList, getActivity() as AppCompatActivity)
                     mListView.adapter = adapter
                     mListView.visibility = View.VISIBLE
 
@@ -74,7 +75,8 @@ class FreeServerFragment : Fragment() {
                     serverDataList = ImportServers(context)
 
                     if (serverDataList.size > 0) {
-                        val adapter = FreeServerListAdapter(context, serverDataList)
+                        val adapter = FreeServerListAdapter(context, serverDataList, getActivity() as AppCompatActivity
+                        )
                         mListView.adapter = adapter
                         mListView.visibility = View.VISIBLE
                     } else

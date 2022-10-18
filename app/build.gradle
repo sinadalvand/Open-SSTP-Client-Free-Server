@@ -24,13 +24,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            applicationIdSuffix ".dev"
+            applicationIdSuffix ".free"
             manifestPlaceholders = [appName: "Open SSTP Client (FREE SERVER)"]
             buildConfigField("boolean", "isDebug", "false")
         }
         debug {
             debuggable true
-            applicationIdSuffix ".free"
+            applicationIdSuffix ".dev"
             manifestPlaceholders = [appName: "Open SSTP Client (FREE SERVER) dev"]
             buildConfigField("boolean", "isDebug", "true")
         }

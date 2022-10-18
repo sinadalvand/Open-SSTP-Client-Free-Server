@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
+import com.google.android.material.tabs.TabLayout
 import kittoku.osc.R
 import kittoku.osc.preference.OscPreference
 import kittoku.osc.preference.accessor.setIntPrefValue
@@ -17,7 +19,7 @@ import kittoku.osc.service.ACTION_VPN_DISCONNECT
 import kittoku.osc.service.SstpVpnService
 
 
-class FreeServerListAdapter(private val context: Context, private val dataSource: ArrayList<ServerData>) : BaseAdapter(){
+class FreeServerListAdapter(private val context: Context, private val dataSource: ArrayList<ServerData>, private val main_activity: AppCompatActivity) : BaseAdapter(){
 
     private val inflater: LayoutInflater
             = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -64,13 +66,15 @@ class FreeServerListAdapter(private val context: Context, private val dataSource
                 ACTION_VPN_DISCONNECT
             ))
 
+            val tabLayout = main_activity.findViewById<TabLayout>(R.id.tabBar);
+            val tab = tabLayout.getTabAt(0);
+            tab?.select();
 
-            Toast.makeText(
-                it.context,
-                "Host changed to ["+ serverData.HOSTNAME + "]\n\n Go to HOME and connect to the new server.",
-                Toast.LENGTH_LONG
-            ).show()
-
+//            Toast.makeText(
+//                it.context,
+//                "Host changed to ["+ serverData.HOSTNAME + "]\n\n Go to HOME and connect to the new server.",
+//                Toast.LENGTH_LONG
+//            ).show()
         })
 
         return rowView

@@ -2,8 +2,12 @@ package kittoku.osc.client.control
 
 import android.net.*
 import android.os.Build
+import com.shapesecurity.salvation2.Values.Host
 import kittoku.osc.client.ClientBridge
 import kittoku.osc.preference.OscPreference
+import kittoku.osc.preference.accessor.getIntPrefValue
+import kittoku.osc.preference.accessor.getSetPrefValue
+import kittoku.osc.preference.accessor.getStringPrefValue
 import kittoku.osc.preference.accessor.setStringPrefValue
 
 
@@ -40,6 +44,12 @@ internal class NetworkObserver(val bridge: ClientBridge) {
 
     private fun updateSummary(properties: LinkProperties) {
         val summary = mutableListOf<String>()
+        summary.add("")
+
+        val host = getStringPrefValue(OscPreference.HOME_HOSTNAME, bridge.prefs)
+        val port = getIntPrefValue(OscPreference.SSL_PORT, bridge.prefs)
+        summary.add("*** " + host + ":" + port + " ***")
+        summary.add("")
 
         bridge.sslTerminal!!.getSession().also {
             summary.add("[SSL/TLS Parameters]")

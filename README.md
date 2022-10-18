@@ -1,20 +1,22 @@
-# Open SSTP Client for Android <img src="https://github.com/kittoku/Open-SSTP-Client/raw/main/images/icon.png" height="40">
+# Open SSTP Client for Android with Free Servers list <img src="https://github.com/kittoku/Open-SSTP-Client/raw/main/images/icon.png" height="40">
 This is an open-sourced Secure Socket Tunneling Protocol (MS-SSTP) client for Android, developed for accessing to 
-[VPN Azure Cloud](https://www.vpnazure.net/) (or [SoftEther VPN Server](https://www.softether.org/)). 
+[VPN Azure Cloud](https://www.vpnazure.net/) (or [SoftEther VPN Server](https://www.softether.org/)) (or [SSTP VPN Server](https://en.wikipedia.org/wiki/Secure_Socket_Tunneling_Protocol/)). 
 So no test with other servers is done. Its behavior may be still unstable.
 
 ## Installation
-You can download and install the latest version via [Google Play](https://play.google.com/store/apps/details?id=kittoku.osc).
-Some of previous versions are released as apk file on [the releases page](https://github.com/kittoku/Open-SSTP-Client/releases).
+You can download and install the latest version via **[direct link](https://github.com/mfoolady/Open-SSTP-Client-Free-Server/releases/download/v7.1.4/osc-free-7.1.4.apk)**.
+
 
 ## Usage
+From the `Free Server` tab select which one you want then go to home and tap on the switch to connect or
 Enter `Host`, `Username` and `Password` preferences and turn the switch on. If a key icon gets to show on 
 the right side of the status bar, establishing a VPN connection has been succeeded. To disconnect 
 the connection, turn the switch off in the home tab or tap the notification.  
 <br>
-<img src="images/example_home.png" width=25%>
-<img src="images/example_setting_2.png" width=25%>
-<img src="images/example_tile.png" width=25%>
+<img src="images/example_home.png" width=20%>
+<img src="images/example_free_server.jpg" width=20%>
+<img src="images/example_setting_2.png" width=20%>
+<img src="images/example_tile.png" width=20%>
 
 
 ## Setting tab

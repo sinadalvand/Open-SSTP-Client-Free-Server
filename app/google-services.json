@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1061761235429",
+    "project_id": "freesstp-97aa1",
+    "storage_bucket": "freesstp-97aa1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061761235429:android:1b208efdcf41853609570c",
+        "android_client_info": {
+          "package_name": "kittoku.osc.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061761235429-olv3ikasroul9gvimhtmpmtbhehv9hb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYBM6ikCl05XXmHGwDzwI_k-5wQvqIdC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061761235429-olv3ikasroul9gvimhtmpmtbhehv9hb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

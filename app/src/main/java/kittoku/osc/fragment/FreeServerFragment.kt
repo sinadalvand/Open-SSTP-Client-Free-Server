@@ -13,6 +13,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -27,7 +28,7 @@ class FreeServerFragment : Fragment() {
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var prg: ProgressBar
     private lateinit var mListView: RecyclerView
-    private lateinit var fabRefresh: FloatingActionButton
+    private lateinit var swiperefreshlayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,17 +44,17 @@ class FreeServerFragment : Fragment() {
         prg = view.findViewById<ProgressBar>(R.id.prgLoading)
         mListView = view.findViewById<RecyclerView>(R.id.serverlist)
         mListView.layoutManager = LinearLayoutManager(view.context)
-        fabRefresh = view.findViewById<FloatingActionButton>(R.id.fabRefresh)
+        swiperefreshlayout = view.findViewById<SwipeRefreshLayout>(R.id.swiperefreshlayout)
 
-        fabRefresh.setOnClickListener(View.OnClickListener {
+        swiperefreshlayout.setOnRefreshListener {
+            swiperefreshlayout.isRefreshing = false
             RefreshList(view.context)
-        })
-
+            //adapter.notifyDataSetChanged()
+        }
         RefreshList(view.context)
     }
 
     fun RefreshList(context: Context) {
-        fabRefresh.visibility = View.INVISIBLE
         mListView.visibility = View.INVISIBLE
         prg.visibility = View.VISIBLE
 
@@ -89,7 +90,6 @@ class FreeServerFragment : Fragment() {
                 }
 
                 prg.visibility = View.INVISIBLE
-                fabRefresh.visibility = View.VISIBLE
             }
         }
     }

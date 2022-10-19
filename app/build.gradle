@@ -71,4 +71,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

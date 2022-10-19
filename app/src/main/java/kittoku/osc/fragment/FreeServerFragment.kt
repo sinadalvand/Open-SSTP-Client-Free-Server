@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -24,7 +26,7 @@ class FreeServerFragment : Fragment() {
 
     private val handler = Handler(Looper.getMainLooper())
     private lateinit var prg: ProgressBar
-    private lateinit var mListView: ListView
+    private lateinit var mListView: RecyclerView
     private lateinit var fabRefresh: FloatingActionButton
 
     override fun onCreateView(
@@ -39,10 +41,9 @@ class FreeServerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         prg = view.findViewById<ProgressBar>(R.id.prgLoading)
-        mListView = view.findViewById<ListView>(R.id.serverlist)
+        mListView = view.findViewById<RecyclerView>(R.id.serverlist)
+        mListView.layoutManager = LinearLayoutManager(view.context)
         fabRefresh = view.findViewById<FloatingActionButton>(R.id.fabRefresh)
-
-
 
         fabRefresh.setOnClickListener(View.OnClickListener {
             RefreshList(view.context)
@@ -66,7 +67,7 @@ class FreeServerFragment : Fragment() {
                         serverDataList.add(it)
                     }
 
-                    val adapter = FreeServerListAdapter(context, serverDataList, getActivity() as AppCompatActivity)
+                    val adapter = FreeServerListAdapter(serverDataList, getActivity() as AppCompatActivity)
                     mListView.adapter = adapter
                     mListView.visibility = View.VISIBLE
 
@@ -75,7 +76,7 @@ class FreeServerFragment : Fragment() {
                     serverDataList = ImportServers(context)
 
                     if (serverDataList.size > 0) {
-                        val adapter = FreeServerListAdapter(context, serverDataList, getActivity() as AppCompatActivity
+                        val adapter = FreeServerListAdapter(serverDataList, getActivity() as AppCompatActivity
                         )
                         mListView.adapter = adapter
                         mListView.visibility = View.VISIBLE

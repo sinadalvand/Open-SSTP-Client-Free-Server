@@ -51,7 +51,7 @@ class HtmlExtractionFreeServer {
 
                 var data = ServerData()
                 extracted.forEachIndexed { index, element ->
-                    Log.i("TAG", element)
+                    //Log.i("TAG", element)
                     if (index > 3) {
                         val step = index % 4
                         if (step == 0) {

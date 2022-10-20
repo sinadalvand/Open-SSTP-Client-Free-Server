@@ -14,8 +14,8 @@ android {
         applicationId "kittoku.osc"
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode 716
-        versionName "7.1.6"
+        versionCode 717
+        versionName "7.1.7"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -25,13 +25,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".free"
-            manifestPlaceholders = [appName: "Open SSTP Client (FREE SERVER)"]
+            manifestPlaceholders = [appName: "Open SSTP (FREE SERVER)"]
             buildConfigField("boolean", "isDebug", "false")
         }
         debug {
             debuggable true
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "Open SSTP Client (FREE SERVER) dev"]
+            manifestPlaceholders = [appName: "Open SSTP (FREE SERVER) dev"]
             buildConfigField("boolean", "isDebug", "true")
         }
     }

@@ -94,6 +94,7 @@ internal class ClientBridge(internal val service: SstpVpnService) {
     internal var sslTerminal: SSLTerminal? = null
     internal var ipTerminal: IPTerminal? = null
 
+    internal val HOME_PROFILE = getStringPrefValue(OscPreference.HOME_PROFILE, prefs)
     internal val HOME_HOSTNAME = getStringPrefValue(OscPreference.HOME_HOSTNAME, prefs)
     internal val HOME_USERNAME = getStringPrefValue(OscPreference.HOME_USERNAME, prefs)
     internal val HOME_PASSWORD = getStringPrefValue(OscPreference.HOME_PASSWORD, prefs)

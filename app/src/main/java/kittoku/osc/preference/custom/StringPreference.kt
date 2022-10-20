@@ -32,6 +32,11 @@ internal abstract class StringPreference(context: Context, attrs: AttributeSet) 
     }
 }
 
+internal class HomeProfilePreference(context: Context, attrs: AttributeSet) : StringPreference(context, attrs) {
+    override val oscPreference = OscPreference.HOME_PROFILE
+    override val preferenceTitle = "Profile"
+}
+
 internal class HomeHostnamePreference(context: Context, attrs: AttributeSet) : StringPreference(context, attrs) {
     override val oscPreference = OscPreference.HOME_HOSTNAME
     override val preferenceTitle = "Hostname"

@@ -3,6 +3,7 @@ package kittoku.osc.preference
 
 internal enum class OscPreference {
     ROOT_STATE,
+    HOME_PROFILE,
     HOME_HOSTNAME,
     HOME_USERNAME,
     HOME_PASSWORD,

@@ -46,9 +46,8 @@ internal class NetworkObserver(val bridge: ClientBridge) {
         val summary = mutableListOf<String>()
         summary.add("")
 
-        val host = getStringPrefValue(OscPreference.HOME_HOSTNAME, bridge.prefs)
-        val port = getIntPrefValue(OscPreference.SSL_PORT, bridge.prefs)
-        summary.add("*** " + host + ":" + port + " ***")
+        summary.add("[Profile/Location]")
+        summary.add(bridge.HOME_PROFILE)
         summary.add("")
 
         bridge.sslTerminal!!.getSession().also {

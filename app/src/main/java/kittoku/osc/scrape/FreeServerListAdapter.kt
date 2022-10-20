@@ -42,10 +42,13 @@ class FreeServerListAdapter(
 
         holder.root.setOnClickListener(View.OnClickListener {
             val prefs = PreferenceManager.getDefaultSharedPreferences(it.context)
+
+            setStringPrefValue(ItemsViewModel.LOCATION, OscPreference.HOME_PROFILE, prefs)
             setStringPrefValue(ItemsViewModel.HOSTNAME, OscPreference.HOME_HOSTNAME, prefs)
             setIntPrefValue(ItemsViewModel.PORT, OscPreference.SSL_PORT, prefs)
             setStringPrefValue("vpn", OscPreference.HOME_USERNAME, prefs)
             setStringPrefValue("vpn", OscPreference.HOME_PASSWORD, prefs)
+
             it.context?.startService(
                 Intent(main_activity, SstpVpnService::class.java).setAction(
                     ACTION_VPN_DISCONNECT

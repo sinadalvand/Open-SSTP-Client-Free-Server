@@ -6,6 +6,7 @@ import kittoku.osc.preference.OscPreference
 
 internal fun getStringPrefValue(key: OscPreference, prefs: SharedPreferences): String {
     val defaultValue = when (key) {
+        OscPreference.HOME_PROFILE -> "My SSTP"
         OscPreference.HOME_HOSTNAME,
         OscPreference.HOME_USERNAME,
         OscPreference.HOME_PASSWORD,

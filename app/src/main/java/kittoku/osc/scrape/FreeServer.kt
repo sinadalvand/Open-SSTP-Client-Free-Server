@@ -34,7 +34,7 @@ class HtmlExtractionFreeServer {
             var listOfServerData = ArrayList<ServerData>()
             try {
                 val contents = URL("https://raw.githubusercontent.com/FreeSSTP/server-list/main/Records.json").readText()
-                Log.i("tag" , contents)
+                //Log.i("tag" , contents)
                 val listType = object: TypeToken<ArrayList<ServerData>>() {}.type
                 listOfServerData = Gson().fromJson(contents, listType)
                 ExportServers(context, listOfServerData)

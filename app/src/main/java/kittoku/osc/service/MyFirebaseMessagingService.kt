@@ -81,7 +81,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                     msg = "Subscribe failed 2"
                 }
                 Log.d("TAG", msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             }
     }
 

@@ -2,7 +2,6 @@ package kittoku.osc.client.control
 
 import android.net.*
 import android.os.Build
-import com.shapesecurity.salvation2.Values.Host
 import kittoku.osc.client.ClientBridge
 import kittoku.osc.preference.OscPreference
 import kittoku.osc.preference.accessor.getIntPrefValue

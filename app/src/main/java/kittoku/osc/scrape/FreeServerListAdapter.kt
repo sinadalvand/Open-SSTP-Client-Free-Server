@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import com.squareup.picasso.Picasso
 import kittoku.osc.R
 import kittoku.osc.preference.OscPreference
 import kittoku.osc.preference.accessor.setIntPrefValue
@@ -34,11 +35,13 @@ class FreeServerListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val ItemsViewModel = dataSource[position]
 
-        holder.textLocation.setText(ItemsViewModel.LOCATION)
+        holder.textLocation.setText(" " + ItemsViewModel.LOCATION)
         holder.textHost.setText(ItemsViewModel.HOSTNAME)
         holder.textPort.setText("" + ItemsViewModel.PORT)
         holder.textPing.setText(ItemsViewModel.PING)
         holder.textUptime.setText(ItemsViewModel.UPTIME)
+
+        Picasso.get().load(ItemsViewModel.FLAG).into(holder.imgFlag)
 
         holder.root.setOnClickListener(View.OnClickListener {
             val prefs = PreferenceManager.getDefaultSharedPreferences(it.context)
@@ -71,6 +74,7 @@ class FreeServerListAdapter(
         val textPort = ItemView.findViewById(R.id.textPort) as TextView
         val textPing = ItemView.findViewById(R.id.textPing) as TextView
         val textUptime = ItemView.findViewById(R.id.textUptime) as TextView
+        val imgFlag = ItemView.findViewById(R.id.imgFlag) as ImageView
 
         val root = ItemView.findViewById(R.id.layoutRoot) as LinearLayout
     }

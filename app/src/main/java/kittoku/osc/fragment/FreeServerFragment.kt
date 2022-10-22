@@ -58,60 +58,22 @@ class FreeServerFragment : Fragment() {
         mListView.visibility = View.INVISIBLE
         prg.visibility = View.VISIBLE
 
-        var serverDataList = ArrayList<ServerData>()
-
-        HtmlExtractionFreeServer().extract() { result ->
+        HtmlExtractionFreeServer().extract(context) { result ->
             handler.post {
-                if (result.size > 3) {
-
-                    result.forEach {
-                        serverDataList.add(it)
-                    }
-
-                    val adapter = FreeServerListAdapter(serverDataList, getActivity() as AppCompatActivity)
+                if (result.size > 0) {
+                    val adapter = FreeServerListAdapter(result, getActivity() as AppCompatActivity)
                     mListView.adapter = adapter
                     mListView.visibility = View.VISIBLE
-
-                    ExportServers(context, serverDataList)
-                } else {
-                    serverDataList = ImportServers(context)
-
-                    if (serverDataList.size > 0) {
-                        val adapter = FreeServerListAdapter(serverDataList, getActivity() as AppCompatActivity
-                        )
-                        mListView.adapter = adapter
-                        mListView.visibility = View.VISIBLE
-                    } else
-                        Toast.makeText(
-                            context,
-                            "Can not fetch the Servers!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                }
-
-                prg.visibility = View.INVISIBLE
+                } else
+                    Toast.makeText(
+                        context,
+                        "Can not fetch the Servers!",
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
-        }
-    }
 
-    fun ExportServers(context: Context, data: ArrayList<ServerData>) {
-        val file = File(context.getFilesDir(), "Records.json")
-        file.createNewFile()
-        val json = Gson().toJson(data)
-        //Log.i("TAG", json)
-        file.writeText(json)
-    }
-
-    fun ImportServers(context: Context): ArrayList<ServerData> {
-        val listOfServerData = ArrayList<ServerData>()
-        val file = File(context.getFilesDir(), "Records.json")
-        if (file.exists()) {
-            val contents = file.readText()
-            //Log.i("TAG", contents)
-            val listType = object: TypeToken<ArrayList<ServerData>>() {}.type
-            return Gson().fromJson(contents, listType)
+            prg.visibility = View.INVISIBLE
         }
-        return listOfServerData
     }
 }
 

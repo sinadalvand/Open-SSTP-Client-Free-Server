@@ -20,19 +20,26 @@
             android:padding="2dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Location:"
                 android:textSize="12sp" />
 
+            <ImageView
+                android:id="@+id/imgFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_baseline_vpn_lock_24" />
+
             <TextView
                 android:id="@+id/textLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:text="TextView"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -42,17 +49,17 @@
             android:padding="2dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Host:"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textHost"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:text="TextView"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -64,17 +71,17 @@
             android:padding="2dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Port:"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textPort"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:text="TextView"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -86,17 +93,17 @@
             android:padding="2dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Ping:"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textPing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:text="TextView"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -108,17 +115,17 @@
             android:padding="2dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Uptime:"
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textUptime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:text="TextView"
                 android:textStyle="bold" />
         </LinearLayout>

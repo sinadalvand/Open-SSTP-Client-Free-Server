@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Open SSTP Client</string>
+    <string-array name="sort_type_array">
+        <item>Best</item>
+        <item>Ping</item>
+        <item>Sessions</item>
+        <item>Up Time</item>
+        <item>Line Quality</item>
+        <item>Score</item>
+    </string-array>
 </resources>

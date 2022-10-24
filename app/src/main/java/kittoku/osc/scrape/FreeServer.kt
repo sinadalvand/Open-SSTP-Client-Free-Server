@@ -24,6 +24,22 @@ data class ServerData(
     override fun toString(): String {
         return "$LOCATION\n$HOSTNAME\n$PORT\n$UPTIME\n$PING"
     }
+
+    fun getPing():Int{
+        return PING.filter { it.isDigit() }.toInt()
+    }
+
+    fun getUpTimeInSeconds():Long{
+        val multi = when{
+            UPTIME.contains("day")-> 60 * 60 * 24L
+            UPTIME.contains("hour")-> 60 * 60L
+            UPTIME.contains("min")-> 60L
+            else -> 1L
+        }
+        return UPTIME.filter { it.isDigit()}.run{ toInt() * multi}
+    }
+
+    fun getLineQuality():Float = LINE_QUALITY.filter { it.isDigit() || it == '.'}.run{ toFloat()}
 }
 
 
